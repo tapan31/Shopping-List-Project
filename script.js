@@ -5,7 +5,7 @@ const filterInput = document.querySelector("#filter");
 const itemList = document.querySelector("#item-list");
 
 let items = JSON.parse(localStorage.getItem("Items"));
-console.log(items);
+// console.log(items);
 if (items !== null) {
   displayItems(items);
 } else {
@@ -16,7 +16,7 @@ if (items !== null) {
 addBtn.addEventListener("click", handleAddClick);
 itemList.addEventListener("click", handleItemListClick);
 clearAllBtn.addEventListener("click", handleClearAllClick);
-filterInput.addEventListener("click", handleFilterInput);
+filterInput.addEventListener("input", handleFilterInput);
 
 function handleAddClick(e) {
   e.preventDefault();
@@ -151,11 +151,12 @@ function displayItems(items) {
     `;
   });
   itemList.innerHTML = output;
+  // console.log("Display Items Called");
 }
 
 function editItem(item) {
   if (isEdit) {
-    console.log(`isEdit: ${isEdit}`);
+    // console.log(`isEdit: ${isEdit}`);
     // items = items.filter((listItems) => listItems !== item.textContent.trim());
     // console.log("Items: ", items);
     // updateLocalStorage();
@@ -261,7 +262,7 @@ function filterItems(value) {
 
 function removeItem(item) {
   let index = items.indexOf(item.textContent.trim());
-  console.log(index);
+  // console.log(index);
   if (index !== -1) {
     items.splice(index, 1);
     itemList.removeChild(item);
@@ -269,7 +270,7 @@ function removeItem(item) {
     updateLocalStorage();
     if (items.length === 0) hideElements();
   } else {
-    console.log("Index is -1");
+    // console.log("Index is -1");
   }
 }
 
